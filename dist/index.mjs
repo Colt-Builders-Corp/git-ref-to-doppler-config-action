@@ -35399,6 +35399,7 @@ const run = async() => {
 	}
 
 	core.setOutput("doppler_config", doppler_config);
+	core.exportVariable('DOPPLER_CONFIG', doppler_config);
 };
 
 try {
