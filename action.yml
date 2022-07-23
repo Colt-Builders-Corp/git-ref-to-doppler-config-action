@@ -1,0 +1,17 @@
+name: 'Git Ref to Doppler Config value'
+description: 'Translate a Git Ref into a Doppler Config value'
+inputs:
+  doppler_token: 
+    description: 'DOPPLER_TOKEN'
+    required: true
+    default: ''
+  git_ref: 
+    description: 'git ref'
+    required: true
+    default: ''
+outputs:
+  doppler_config: 
+    description: 'DOPPLER_CONFIG'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
