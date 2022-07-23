@@ -14,4 +14,4 @@ outputs:
     description: 'DOPPLER_CONFIG'
 runs:
   using: 'node16'
-  main: 'dist/index.js'
+  main: 'dist/index.mjs'
