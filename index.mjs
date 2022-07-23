@@ -1,8 +1,9 @@
 import * as core from '@actions/core';
 import * as github from '@actions/github';
-import to from 'await-to-js';
+import { to } from 'await-to-js';
 import _ from 'lodash';
 import axios from "axios";
+import { mapSeries } from 'modern-async';
 
 const gitRefToEnv = async(gitRef, token) => {
 	const envs = [
@@ -16,7 +17,7 @@ const gitRefToEnv = async(gitRef, token) => {
 	];
 	const found = [];
 
-	const [errE] = await to(eachSeries(envs, async (config) => {
+	const [errE] = await to(mapSeries(envs, async (config) => {
 		const [errF, payload] = await to(secret('lever-action', config, 'GITHUB_REF_NAME', token));
 		if (errF) {
 			throw new Error(errF);
